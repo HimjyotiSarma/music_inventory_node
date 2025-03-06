@@ -1,0 +1,21 @@
+{
+  "name": "music_inventory",
+  "version": "0.0.1",
+  "description": "Basic Inventory App",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "migrate": "node-pg-migrate"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "node-pg-migrate": "^7.9.1",
+    "nodemon": "^3.1.9",
+    "pg": "^8.13.3"
+  }
+}
