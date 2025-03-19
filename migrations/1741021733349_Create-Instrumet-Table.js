@@ -9,17 +9,15 @@ exports.shorthands = undefined
  * @returns {Promise<void> | void}
  */
 exports.up = (pgm) => {
-  pgm.sql(
-    `
-        CREATE TABLE instrument(
-                id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-                name VARCHAR(100),
-                img_url VARCHAR(250),
-                description VARCHAR(500),
-                price_in_paise integer
-        );
-        `
-  )
+  pgm.sql(`
+    CREATE TABLE instrument (
+      id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+      name VARCHAR(100) NOT NULL,
+      img_url VARCHAR(250) NOT NULL,
+      description VARCHAR(500) NOT NULL,
+      price_in_paise BIGINT NOT NULL
+    );
+  `)
 }
 
 /**

@@ -4,16 +4,20 @@
   "description": "Basic Inventory App",
   "license": "ISC",
   "author": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "migrate": "node-pg-migrate"
+    "migrate": "node-pg-migrate",
+    "migrate:up": "DATABASE_URL='postgresql://himjyoti:Him_Postgre_DB@localhost:5432/inventory_app' npm run migrate up"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "cloudinary": "^2.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
     "node-pg-migrate": "^7.9.1",
     "nodemon": "^3.1.9",
     "pg": "^8.13.3"

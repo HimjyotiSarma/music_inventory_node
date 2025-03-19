@@ -1,24 +1,42 @@
-import dotenv from 'dotenv'
-import pool from './db/pool.js'
-import app from './app.js'
+const dotenv = require('dotenv')
+dotenv.config({ path: './.env' }) // Ensure .env loads before anything else
 
-dotenv.config({
-  path: './.env',
-})
+const pool = require('./db/pool.js')
+const app = require('./app.js')
+
+// console.log('DATABASE_URL:', process.env.DATABASE_URL)
+
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env
 
 pool
   .connect({
     host: 'localhost',
-    port: 5432,
     database: 'inventory_app',
-    user: 'postgres',
+    user: 'himjyoti',
     password: 'Him_Postgre_DB',
+    port: 5432,
   })
   .then(() => {
-    app.listen(process.env.PORT || 8000, () => {
-      console.log(`Server is listening at Port ${process.env.PORT}`)
+    const PORT = process.env.PORT || 3000
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`)
     })
   })
   .catch((error) => {
-    console.error(error)
+    console.error('Database connection error:', error)
   })
+
+// host: process.env.PGHOST,
+// database: process.env.PGDATABASE,
+// user: process.env.PGUSER,
+// password: process.env.PGPASSWORD,
+// port: 5432,
+// ssl: {
+//   require: true,
+// },
+
+// host: 'localhost',
+// database: 'inventory_app',
+// user: 'himjyoti',
+// password: 'Him_Postgre_DB',
+// port: 5432,
