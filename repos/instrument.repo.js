@@ -8,7 +8,7 @@ class InstrumentRepos {
   }
   static async findById(instrument_id) {
     const { rows } = await pool.query(
-      'SELECT * FROM inventory WHERE inventory = $1',
+      'SELECT * FROM instrument WHERE instrument.id = $1',
       [instrument_id]
     )
     return rows[0]

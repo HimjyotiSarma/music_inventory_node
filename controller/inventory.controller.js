@@ -28,15 +28,17 @@ const getAllInstruments = asyncHandler(async (req, res) => {
 const getSingleInstrument = asyncHandler(async (req, res) => {
   try {
     const { id } = req.params
-    const instrument_info = InstrumentRepos.findById(id)
+    const instrument_info = await InstrumentRepos.findById(id)
+    console.log(instrument_info)
+
     if (!instrument_info) {
       throw new Error('Instrument Info Unvailable. Please Again Later')
     }
     return res
-      .status(302)
+      .status(200)
       .json(
         new ApiResponse(
-          302,
+          200,
           'Instrument Info Found successfully',
           instrument_info
         )
